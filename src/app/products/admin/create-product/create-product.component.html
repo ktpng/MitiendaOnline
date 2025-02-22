@@ -1,0 +1,107 @@
+<div class="create-product-dialog">
+  <h2 mat-dialog-title>Crear Producto</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Ingrese el nombre del producto"
+        />
+        <mat-error *ngIf="productForm.get('title')?.errors?.['required']">
+          El nombre es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <div class="date-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Fabricación</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date"
+            placeholder="Seleccione una fecha"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="price-field">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="price"
+            placeholder="0.00"
+          />
+          <mat-error *ngIf="productForm.get('price')?.errors?.['required']">
+            El precio es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-icon class="euro-icon">euro</mat-icon>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <mat-select formControlName="category">
+          <mat-option>
+            <ngx-mat-select-search
+              [formControl]="categoryFilterCtrl"
+              placeholderLabel="Buscar categoría..."
+              noEntriesFoundLabel="No se encontraron categorías"
+            >
+            </ngx-mat-select-search>
+          </mat-option>
+          <mat-option
+            *ngFor="let category of filteredCategories | async"
+            [value]="category"
+          >
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description" rows="4"></textarea>
+        <mat-error *ngIf="productForm.get('description')?.errors?.['required']">
+          La descripción es requerida
+        </mat-error>
+      </mat-form-field>
+
+      <div class="image-upload">
+        <mat-label>Foto del Producto</mat-label>
+
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          #fileInput
+          style="display: none"
+        />
+        <div class="preview-container" (click)="fileInput.click()">
+          <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview" />
+          <div *ngIf="!imagePreview" class="upload-placeholder">
+            <mat-icon>image</mat-icon>
+          </div>
+
+          <span class="add-product-button" (click)="fileInput.click()">
+            <mat-icon class="add-icon">add</mat-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button class="btn-primary" type="submit" [disabled]="!productForm.valid">
+        Crear Producto
+      </button>
+    </div>
+  </form>
+</div>

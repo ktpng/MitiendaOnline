@@ -1,0 +1,35 @@
+<div *ngIf="showHeader()">
+  <div class="container-fluid">
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/listado" routerLinkActive="active"
+        >Listado</a
+      >
+      <a
+        class="nav-link"
+        routerLink="/administrador"
+        routerLinkActive="active"
+        *ngIf="authService.isAdminUser()"
+      >
+        Administrador
+      </a>
+    </div>
+
+    <div class="navbar-nav">
+      <a
+        class="nav-link"
+        *ngIf="authService.isAuthenticated()"
+        (click)="onLogout()"
+      >
+        <mat-icon>logout</mat-icon> {{ (authService.user$ | async)?.email }}</a
+      >
+
+      <a
+        class="nav-link"
+        *ngIf="!authService.isAuthenticated()"
+        routerLink="/login"
+      >
+        <mat-icon>login</mat-icon> Iniciar Sesión</a
+      >
+    </div>
+  </div>
+</div>

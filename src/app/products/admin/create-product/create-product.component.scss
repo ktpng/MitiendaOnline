@@ -1,0 +1,120 @@
+.create-product-dialog {
+  padding: 20px;
+
+  .date-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .price-field {
+    width: 40%;
+  }
+
+  .euro-icon {
+    font-size: 24px;
+    color: #007bff;
+    margin-left: 8px;
+    margin-bottom: 32px;
+    padding-right: 26px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .image-upload {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+
+    .preview-container {
+      width: 120px;
+      height: 120px;
+      border: 2px dashed #c4c4c4;
+      border-radius: 12px;
+      position: relative;
+
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      background-color: #f8f9fa;
+
+      &:hover {
+        border-color: #007bff;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px;
+      }
+
+      .add-product-button {
+        border-radius: 50%;
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        bottom: -20px;
+        right: -24px;
+        background-color: #007bff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .add-icon {
+          color: #fff;
+        }
+      }
+
+      .upload-placeholder {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 32px;
+        color: #888;
+
+        .mat-icon {
+          transform: scale(2);
+        }
+      }
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+
+    input,
+    textarea {
+      font-size: 16px;
+    }
+
+    mat-select {
+      font-size: 16px;
+    }
+  }
+
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+}
+::ng-deep .mat-select-search-input {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+  }
+}

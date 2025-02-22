@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="layout-grid">
+    <div class="products-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtrar por categoría</mat-label>
+        <mat-select [(ngModel)]="selectedCategory">
+          <mat-option>
+            <ngx-mat-select-search
+              [formControl]="categoryFilterCtrl"
+              placeholderLabel="Buscar categoría..."
+              noEntriesFoundLabel="No se encontraron categorías"
+            >
+            </ngx-mat-select-search>
+          </mat-option>
+
+          <mat-option value="">Todas las categorías</mat-option>
+          <mat-option
+            *ngFor="let category of filteredCategories | async"
+            [value]="category"
+          >
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="product-grid">
+        <mat-card
+          class="product-card"
+          *ngFor="let product of products | filterByCategory : selectedCategory"
+        >
+          <img mat-card-image [src]="product.image" [alt]="product.title" />
+          <mat-card-content>
+            <div>
+              <h4>{{ product.title }}</h4>
+            </div>
+
+            <div class="product-info-bottom">
+              <p class="price">{{ product.price | currency }}</p>
+
+              <button
+                mat-raised-button
+                (click)="addToCart(product)"
+                class="add-to-cart"
+              >
+                Añadir
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="cart-section"><app-cart></app-cart></div>
+  </div>
+</div>

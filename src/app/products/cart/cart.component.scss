@@ -1,0 +1,104 @@
+.cart-sidebar {
+  width: 458px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+
+  .card-header {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .label-title {
+    font-size: 26px;
+    font-weight: 503;
+    color: #070707;
+  }
+
+  .cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+
+    .cart-item {
+      max-height: 300px;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eaeaea;
+
+      .item-image img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .item-details {
+        flex-grow: 1;
+        padding-left: 10px;
+
+        h5 {
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0 0 5px 0;
+          color: #333;
+        }
+
+        .quantity-controls {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+
+            &:hover {
+              background: #f0f0f0;
+            }
+          }
+
+          .quantity {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            width: 20px;
+            text-align: center;
+          }
+        }
+      }
+
+      .item-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+
+  .cart-footer {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    .btn-checkout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #6200ea;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s;
+      padding: 8px 12px;
+      border-radius: 6px;
+      gap: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      &.active {
+        font-weight: bold;
+        background-color: #430598;
+      }
+    }
+  }
+}
